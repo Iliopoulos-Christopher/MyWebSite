@@ -1,0 +1,50 @@
+/* CSS for white boxes or paper-like backgrounds */
+.section {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .about-text {
+    margin-left: 100px; /* Adjust the left margin value as desired */
+    margin-right: 100px; /* Adjust the right margin value as desired */
+  }
+  
+  #about {
+    height: 900px; /* Adjust the height value as desired */
+    overflow: auto;
+  }
+  #home {
+    height: 1190px; /* Adjust the height value as desired */
+    overflow: auto;
+  }
+  
+  .headshot {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .headshot img {
+    max-width: 100%;
+    height: auto;
+  }
+  #resume {
+    padding: 20px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  #resume h2 {
+    color: #007bff;
+    font-size: 3.5rem;
+  }
+  
+  #comments h2 {
+    color: #007bff;
+  }
+
+
+  
+  

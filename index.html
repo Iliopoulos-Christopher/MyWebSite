@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Personal Website</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+    rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+    crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/login.css">
+  <link rel="stylesheet" type="text/css" href="css/navbar.css">
+  <link rel="stylesheet" type="text/css" href="css/section.css">
+  <link rel="stylesheet" type="text/css" href="css/signup.css">
+  <link rel="stylesheet" type="text/css" href="css/welcome.css">
+  <link rel="stylesheet" type="text/css" href="css/projects.css">
+  <link rel="stylesheet" type="text/css" href="css/contact.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body.contact-form-open {
+      overflow: hidden;
+      /* Prevent scrolling when form is open */
+      position: relative;
+    }
+
+    .contact-form-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      /* Semi-transparent gray overlay */
+      z-index: 9999;
+      /* Ensure the overlay is on top */
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#home">Christopher Iliopoulos</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="resumeDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Resume
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="resumeDropdown">
+              <li><a class="dropdown-item" href="#resume">Resume</a></li>
+              <li><a class="dropdown-item" href="#education">Education</a></li>
+              <li><a class="dropdown-item" href="#experience">Experience</a></li>
+              <li><a class="dropdown-item" href="#skills">Skills</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Account
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="accountDropdown">
+              <li>
+                <button id="signupButton" class="dropdown-item">Sign Up</button>
+              </li>
+              <li>
+                <button id="loginButton" class="dropdown-item">Login</button>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6">
+        <!-- Welcome Section -->
+        <section class="section" id="home">
+          <div class="welcome-content text-center p-4">
+            <h1 class="display-4 text-primary">Welcome to my website!</h1>
+            <p class="welcome-text">
+              Welcome to my little corner of the web, a virtual canvas where I bring my passion for coding to life. This
+              website not only represents the projects that have sprung from my fascination with technology but also acts
+              as a testament to my journey in this dynamic field.
+            </p>
+
+            <p class="lead welcome-text text-secondary"></p>
+            Built with careful attention to detail using JavaScript and Bootstrap, this website is an embodiment of my
+            dedication to continual learning and problem-solving. Every line of code here has been penned with
+            consideration, aiming to create an enjoyable browsing experience for all.
+            </p>
+
+            <p class="lead welcome-text text-secondary"></p>
+            On this platform, you'll find not only my resume but also a portfolio that exhibits the scope of my
+            abilities. Each project serves as an example of my capacity to harness technology for problem-solving,
+            whether it's creating automated environments at Semcasting or developing sales content at Boston Intelligent
+            Robotic Technologies.
+            </p>
+
+            <p class="lead welcome-text text-secondary"></p>
+            The journey that led me here began at the University of Massachusetts, where I earned my BS in Management and
+            Communications with minors in Marketing and Systems Information & Business Analytics. I've had the opportunity
+            to work with industry-leading tools like RedShift, Python, and SQL, and to contribute to different sectors,
+            from marketing to robotics.
+            </p>
+
+            <p class="lead welcome-text text-secondary"></p>
+            I invite you to explore this digital world with me, where my passion for coding intertwines with a dedication
+            to constant growth. Whether you're an employer, a colleague, or someone intrigued by the world of web
+            development, I hope this website provides a small glimpse into my journey and what the future might hold.
+            </p>
+
+            <p class="lead welcome-text text-secondary"></p>
+            Thank you for visiting. Here, creativity and coding come together in a humble contribution to the
+            ever-evolving digital landscape.
+          </div>
+        </section>
+      </div>
+
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-12">
+            <!-- Headshot -->
+            <div class="headshot">
+              <img src="img/images.jpg" alt="Your Headshot" class="rounded-circle img-fluid">
+            </div>
+          </div>
+          <div class="col-md-12">
+            <!-- About Section -->
+            <section id="about" class="section my-5">
+              <div class="about-container">
+                <h2 class="display-4 text-primary mb-4 text-center">About</h2>
+                <p class="about-text">
+                  Hi there, I'm Christopher Iliopoulos. My journey into coding and automation was motivated by a simple
+                  insight: technology can do things more reliably, accurately, and quickly than humans. It's this
+                  principle that shapes my work and drives me to create efficient, automated solutions.
+                </p>
+                <p class="about-text text-center">
+                  In my downtime, I enjoy embracing the outdoors, whether that's on foot or on my motorcycle. I'm a firm
+                  believer in the importance of balance in life and cherish time spent with my pet rabbit when I'm not
+                  working.
+                </p>
+                <p class="about-text text-center">
+                  Professional transparency is a value I hold dear. I believe clear communication eliminates obstacles
+                  and makes for smoother processes, whether in coding or life in general.
+                </p>
+                <p class="about-text text-center">
+                  Looking ahead, my goal is to make a meaningful impact, using my skills to change the world in my own
+                  small way. Thank you for visiting, and enjoy exploring my work!
+                </p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+      <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+          <h2 class="display-4 text-primary">Projects</h2>
+          <h3 class="project-title">Comming Soon. </h3>
+          <p>Most of my work has been for my copamny, but I have many small projects that are all slowly but surly coming to life and will be posted here when finished along with a link to the git dipository.</p>
+      </div>
+
+      <div class="project-carousel owl-carousel">
+        <div class="project-card">
+          <div class="project-card-inner">
+            <h3 class="project-title">Project 1</h3>
+            <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vestibulum ligula ut arcu efficitur, eget finibus ipsum rutrum.</p>
+            <a href="#project1Modal" data-bs-toggle="modal">Read More</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-card-inner">
+            <h3 class="project-title">Project 2</h3>
+            <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vestibulum ligula ut arcu efficitur, eget finibus ipsum rutrum.</p>
+            <a href="#" class="project-link">Read More</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-card-inner">
+            <h3 class="project-title">Project 3</h3>
+            <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vestibulum ligula ut arcu efficitur, eget finibus ipsum rutrum.</p>
+            <a href="#" class="project-link">Read More</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-card-inner">
+            <h3 class="project-title">Project 4</h3>
+            <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vestibulum ligula ut arcu efficitur, eget finibus ipsum rutrum.</p>
+            <a href="#" class="project-link">Read More</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-card-inner">
+            <h3 class="project-title">Project 5</h3>
+            <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vestibulum ligula ut arcu efficitur, eget finibus ipsum rutrum.</p>
+            <a href="#" class="project-link">Read More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section class="section text-center my-5" id="resume">
+      <h2 class="mb-4">Resume</h2>
+      <div id="resume" style="text-align: left;">
+        <h3>CHRISTOPHER ILIOPOULOS</h3>
+        <p><a href="mailto:iliopoulos.christopher@gmail.com">iliopoulos.christopher@gmail.com</a></p>
+
+        <p class="center-text">
+          Versatile and results-oriented professional with keen expertise in automation and data-driven
+          solutions. Known for transforming complex business processes into streamlined, automated systems to improve
+          operational efficiency by harnessing advanced technology.
+        </p>
+
+        <h4 id="education">Education</h4>
+        <p>
+          University of Massachusetts, Boston, MA - BS in Management and Communications (May 2022)<br />
+          Minors in Marketing and Systems Information & Business Analytics
+        </p>
+
+        <h4 id="experience">Experience</h4>
+        <h5>Automation/Quality Control Analyst, Semcasting, Andover, MA (February 2023 - Present)</h5>
+        <ul>
+          <li>Architecting custom automated environments, designed to align with specific web testing and reporting goals
+            in order to enhance performance and efficiency.</li>
+          <li>Monitoring and maintaining ETL reporting scripts and applications, utilizing tools like RedShift, Python,
+            S3, SFTPs, and Gmail to improve reliability and accuracy of data-driven decisions.</li>
+          <li>Developing Selenium test scripts with Python and JavaScript to strengthen website quality assurance and user
+            experience.</li>
+          <li>Analyzing new releases of web components thoroughly to ensure correct functionality.</li>
+          <li>Documenting test procedures and methodologies in order to ensure security and audit compliance.</li>
+        </ul>
+
+        <h5>Digital Marketing Associate, Semcasting, Andover, MA (June 2022 - February 2023)</h5>
+        <ul>
+          <li>Crafted ETL scripts using redshiftSQL to provide insights for evaluating campaign efficiency.</li>
+          <li>Created automation for seamlessly consuming client data for analysis, and utilization in launched targeted
+            campaigns.</li>
+          <li>Gained in-depth knowledge of latest digital marketing practices by attending a transformative training
+            program on cutting-edge strategies adopted by leading advertisers.</li>
+        </ul>
+
+        <h5>Business Development Executive, Boston Intelligent Robotic Technologies, Boston, MA (August 2021 - December
+          2021)</h5>
+        <ul>
+          <li>Conducted comprehensive market research to create and optimize compelling sales content.</li>
+          <li>Crafted visually engaging flyers, persuasive emails, effective call scripts, and captivating
+            advertisements, which heightened our brand's visibility and appeal to potential customers.</li>
+          <li>Utilized diverse communication techniques to engage and build relationships with potential consumers.</li>
+          <li>Successfully sparked customer interest and scheduled formal meetings to showcase the unique value
+            proposition of our robotic technologies.</li>
+        </ul>
+
+        <h5>Intern-Analyst, Massachusetts Institute of Technology, Cambridge, MA (March 2017, April 2018)</h5>
+        <ul>
+          <li>In 2017, assisted with project finance reconciliations using Excel, ensuring accurate tracking of project
+            and portfolio finances.</li>
+          <li>In 2018, used a rapid application development platform to develop a proof of concept for monitoring
+            consultant time allocation to projects, improving resource management.</li>
+        </ul>
+
+        <h4 id="skills">Certifications & Professional Development</h4>
+        <ul>
+          <li>PCEP – Certified Entry-Level Python Programmer - Python Institute - 2023</li>
+          <li>SQL for Data Science - Coursera (Offered by UC Davis) - 2022</li>
+          <li>Managing Big Data with MySQL - Coursera (Offered by Duke University) - 2022</li>
+          <li>Business Metrics for Data-Driven Companies - Coursera (Offered by Duke University) - 2022</li>
+          <li>Data Visualization & Communication with Tableau - Coursera (Offered by Duke University) - 2022</li>
+          <li>Ultimate Google Ads Training 2021: Profit with Pay Per Click - Udemy - 2023</li>
+          <li>Mastering Data Analysis in Excel - Coursera (Offered by Duke University) - 2022</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Comments Section -->
+    <section class="section" id="comments">
+      <h2>Comments</h2>
+      <div class="comments-container">
+      <div id="commentList">
+        <!-- Existing comments will be dynamically added here -->
+      </div>
+      <form id="commentForm">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control" id="name" required>
+        </div>
+        <div class="form-group">
+          <label for="comment">Comment:</label>
+          <textarea class="form-control" id="comment" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="project1Modal" tabindex="-1" aria-labelledby="project1ModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="project1ModalLabel">Project 1</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas aliquam lacus mauris, a pharetra ante
+              porttitor vel. Suspendisse fermentum nisi a interdum interdum. Mauris dapibus velit ex, vitae volutpat magna
+              ultricies ac.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-circle">
+      <i class="fas fa-envelope"></i>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div id="contact-form-container" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <div id="contact-form">
+      <button type="button" class="close" onclick="closeContactForm()">&times;</button>
+      <h2>Contact Me</h2>
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control" id="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" id="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message:</label>
+          <textarea class="form-control" id="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="contact-form-overlay" id="contact-form-overlay" style="display: none;"></div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script src="js/dropdown.js"></script>
+  <script src="js/comment.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/signup.js"></script>
+  <script src="js/login.js"></script>
+  <script>
+    // Function to open the sign-up pop-up
+    function openSignupPopup() {
+      window.open('signup.html', '_blank', 'width=500,height=400');
+    }
+
+    // Function to open the login pop-up
+    function openLoginPopup() {
+      window.open('login.html', '_blank', 'width=500,height=400');
+    }
+
+  
+
+    // Example event listeners for buttons
+    document.getElementById('signupButton').addEventListener('click', openSignupPopup);
+    document.getElementById('loginButton').addEventListener('click', openLoginPopup);
+    document.querySelector('.contact-circle').addEventListener('click', openContactForm);
+  </script>
+</body>
+
+</html>
