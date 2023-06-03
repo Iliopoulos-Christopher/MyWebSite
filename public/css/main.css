@@ -1,50 +1,515 @@
 /* CSS for white boxes or paper-like backgrounds */
 .section {
-    background-color: white;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .about-text {
-    margin-left: 100px; /* Adjust the left margin value as desired */
-    margin-right: 100px; /* Adjust the right margin value as desired */
-  }
-  
-  #about {
-    height: 900px; /* Adjust the height value as desired */
-    overflow: auto;
-  }
-  #home {
-    height: 1190px; /* Adjust the height value as desired */
-    overflow: auto;
-  }
-  
-  .headshot {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  .headshot img {
-    max-width: 100%;
-    height: auto;
-  }
-  #resume {
-    padding: 20px;
-    background-color: #f7f7f7;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  #resume h2 {
-    color: #007bff;
-    font-size: 3.5rem;
-  }
-  
-  #comments h2 {
-    color: #007bff;
-  }
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.about-text {
+  margin-right: 60px;
+  margin-left: 60px;
+  max-width: 600px;
+}
+
+#about {
+  height: 620px;
+  overflow: hidden;
+}
+
+#home {
+  height: auto;
+  overflow: hidden;
+}
+
+.headshot {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.headshot img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
 
 
-  
-  
+#resume {
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #f1f1f1;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#resume h2 {
+  color: #007bff;
+  font-size: 2.5rem;
+}
+
+#comments h2 {
+  color: #007bff;
+  font-size: 2rem;
+}
+
+/* Add these CSS styles for the success and error notification containers */
+.notification-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.notification {
+  display: none;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  width: 300px;
+}
+
+.success-notification {
+  background-color: #8bc34a;
+}
+
+.error-notification {
+  background-color: #f44336;
+}
+
+/* Styles for the navbar */
+.navbar {
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.navbar-brand {
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.navbar-nav .nav-item .nav-link {
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  padding: 8px 16px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar-nav .nav-item .nav-link:before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: #007bff;
+  transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-item .nav-link:hover:before,
+.navbar-nav .nav-item .nav-link:focus:before {
+  width: 100%;
+}
+
+/* Styles for the Contact Me form */
+body.contact-form-open {
+  overflow: hidden;
+}
+
+.contact-form-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+}
+
+#contact-form-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  max-width: 600px;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0s linear 0s;
+}
+
+body.contact-form-open #contact-form-container {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+  pointer-events: none;
+}
+
+#contact-form h2 {
+  margin-bottom: 20px;
+  color: #007bff;
+  font-size: 2.5rem;
+}
+
+#contact-form .form-group {
+  margin-bottom: 20px;
+}
+
+#contact-form label {
+  font-weight: bold;
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+#contact-form button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Styles for the Close button */
+#contact-form .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.contact-circle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #007bff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 9999;
+}
+
+.contact-circle i {
+  color: #fff;
+  font-size: 24px;
+}
+
+.contact-circle:hover {
+  background-color: #0056b3;
+}
+
+/* CSS for login form */
+body {
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+  padding-top: 60px;
+}
+
+.login-container,
+.signup-container {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 9981;
+}
+
+.contact-form-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.login-form {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+  color: #007bff;
+  font-size: 2.5rem;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Close button styles */
+.login-container .close {
+  display: flex;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+/* CSS for signup form */
+.signup-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  z-index: 9998;
+}
+
+.signup-form {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  z-index: 9997;
+}
+
+.signup-form h2 {
+  margin-bottom: 20px;
+  color: #007bff;
+  font-size: 2.5rem;
+}
+
+.signup-form button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  color: #fff;
+  background-color: #007BFF;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.signup-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Close button styles */
+.signup-container .close {
+  position: absolute;
+  display: flex;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+:target::before {
+  content: "";
+  display: block;
+  height: 80px; /* Adjust the value to match the height of your fixed navbar */
+  margin: -80px 0 0; /* Adjust the value to match the height of your fixed navbar */
+}
+
+.comments-section {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  max-height: 300px; /* Adjust the maximum height as desired */
+  overflow-y: auto;
+}
+
+.comments-section h2 {
+  color: #007bff;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.comment {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+}
+
+.comment-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.comment-text {
+  margin-bottom: 5px;
+}
+
+.comment-datetime {
+  font-size: 12px;
+  color: #888;
+}
+
+.comment-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.comment-actions button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.comment-actions button:hover {
+  background-color: #0056b3;
+}
+
+/* Additional styles for success and error notifications */
+.success-notification,
+.error-notification {
+  position: fixed;
+  top: 60px; /* Adjust the top position as per your requirement */
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  z-index: 9999;
+  width: 300px;
+  text-align: center;
+}
+
+.success-notification {
+  background-color: #8bc34a;
+}
+
+.error-notification {
+  background-color: #f44336;
+}
+
+.notification-container .notification.show {
+  display: block;
+}
+/* Project styles */
+.project-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(48, 89, 223, 0.1);
+  margin-bottom: 20px;
+}
+.project-card {
+  border: 2px solid #333;
+  color: #333;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+
+
+.project-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.project-description {
+  margin-bottom: 10px;
+}
+
+.project-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.project-link {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.project-link:hover {
+  background-color: #0056b3;
+}

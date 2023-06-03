@@ -9,85 +9,68 @@
     rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
     crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="css/main.css">
-  <link rel="stylesheet" type="text/css" href="css/login.css">
-  <link rel="stylesheet" type="text/css" href="css/navbar.css">
-  <link rel="stylesheet" type="text/css" href="css/section.css">
-  <link rel="stylesheet" type="text/css" href="css/signup.css">
-  <link rel="stylesheet" type="text/css" href="css/welcome.css">
-  <link rel="stylesheet" type="text/css" href="css/projects.css">
-  <link rel="stylesheet" type="text/css" href="css/contact.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    body.contact-form-open {
-      overflow: hidden;
-      /* Prevent scrolling when form is open */
-      position: relative;
-    }
-
-    .contact-form-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      /* Semi-transparent gray overlay */
-      z-index: 9999;
-      /* Ensure the overlay is on top */
-    }
-  </style>
 </head>
-
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="#home">Christopher Iliopoulos</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="resumeDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Resume
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="resumeDropdown">
-              <li><a class="dropdown-item" href="#resume">Resume</a></li>
-              <li><a class="dropdown-item" href="#education">Education</a></li>
-              <li><a class="dropdown-item" href="#experience">Experience</a></li>
-              <li><a class="dropdown-item" href="#skills">Skills</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Account
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="accountDropdown">
-              <li>
-                <button id="signupButton" class="dropdown-item">Sign Up</button>
-              </li>
-              <li>
-                <button id="loginButton" class="dropdown-item">Login</button>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#projects">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#about">About</a>
-          </li>
-        </ul>
-      </div>
+<!-- Add this HTML element for the notification -->
+<div id="success-notification" style="background-color: chartreuse; text-align: center; z-index: 9999 !important; position: fixed; width: 100%;"></div>
+<div id="error-notification"  style="background-color: red; text-align: center; z-index: 9999 !important;  position: fixed; width: 100%;"></div>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#home">Christopher Iliopoulos</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="resumeDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Resume
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="resumeDropdown">
+            <li><a class="dropdown-item" href="#resumelink">Resume</a></li>
+            <li><a class="dropdown-item" href="#education">Education</a></li>
+            <li><a class="dropdown-item" href="#experience">Experience</a></li>
+            <li><a class="dropdown-item" href="#skills">Skills</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Account
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="accountDropdown">
+            <li>
+              <button id="signupButton" class="dropdown-item">Sign Up</button>
+            </li>
+            <li>
+              <button id="loginButton" class="dropdown-item">Login</button>
+            </li>
+            <li>
+              <button id="logoutButton" class="dropdown-item" style="display: none;">Logout</button>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#projectslink">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#aboutlink">About</a>
+        </li>
+      </ul>
+      <div id="usernameDisplay" style="display: none; position: absolute; top: 2px; right: 10px; color: white; font-weight: bold; font-size: 12px;"></div>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <div class="container mt-5">
     <div class="row">
@@ -145,6 +128,7 @@
           </div>
           <div class="col-md-12">
             <!-- About Section -->
+            <div id="aboutlinks"></div>
             <section id="about" class="section my-5">
               <div class="about-container">
                 <h2 class="display-4 text-primary mb-4 text-center">About</h2>
@@ -174,11 +158,12 @@
     </div>
 
     <!-- Projects Section -->
+    <div id="projectslink"></div>
     <section class="section" id="projects">
       <div class="row justify-content-center">
         <div class="col-md-8 text-center">
           <h2 class="display-4 text-primary">Projects</h2>
-          <h3 class="project-title">Comming Soon. </h3>
+          <h3 class="project-title">Coming Soon. </h3>
           <p>Most of my work has been for my copamny, but I have many small projects that are all slowly but surly coming to life and will be posted here when finished along with a link to the git dipository.</p>
       </div>
 
@@ -187,7 +172,7 @@
           <div class="project-card-inner">
             <h3 class="project-title">Project 1</h3>
             <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vestibulum ligula ut arcu efficitur, eget finibus ipsum rutrum.</p>
-            <a href="#project1Modal" data-bs-toggle="modal">Read More</a>
+            <a href="#" class="project-link">Read More</a>
           </div>
         </div>
         <div class="project-card">
@@ -204,29 +189,15 @@
             <a href="#" class="project-link">Read More</a>
           </div>
         </div>
-        <div class="project-card">
-          <div class="project-card-inner">
-            <h3 class="project-title">Project 4</h3>
-            <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vestibulum ligula ut arcu efficitur, eget finibus ipsum rutrum.</p>
-            <a href="#" class="project-link">Read More</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-card-inner">
-            <h3 class="project-title">Project 5</h3>
-            <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vestibulum ligula ut arcu efficitur, eget finibus ipsum rutrum.</p>
-            <a href="#" class="project-link">Read More</a>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- Resume Section -->
+    <div id="resumelink"></div>
     <section class="section text-center my-5" id="resume">
       <h2 class="mb-4">Resume</h2>
-      <div id="resume" style="text-align: left;">
-        <h3>CHRISTOPHER ILIOPOULOS</h3>
-        <p><a href="mailto:iliopoulos.christopher@gmail.com">iliopoulos.christopher@gmail.com</a></p>
+      <div style="text-align: left;">
+        <h3 >CHRISTOPHER ILIOPOULOS</h3>
+        <p ><a href="mailto:iliopoulos.christopher@gmail.com">iliopoulos.christopher@gmail.com</a></p>
 
         <p class="center-text">
           Versatile and results-oriented professional with keen expertise in automation and data-driven
@@ -295,25 +266,30 @@
     </div>
 
     <!-- Comments Section -->
-    <section class="section" id="comments">
-      <h2>Comments</h2>
-      <div class="comments-container">
-      <div id="commentList">
-        <!-- Existing comments will be dynamically added here -->
-      </div>
-      <form id="commentForm">
-        <div class="form-group">
-          <label for="name">Name:</label>
-          <input type="text" class="form-control" id="name" required>
-        </div>
-        <div class="form-group">
-          <label for="comment">Comment:</label>
-          <textarea class="form-control" id="comment" rows="5" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+<!-- Comments Section -->
+<!-- Comments Section -->
+<section class="section" id="comments">
+  <h2>Comments</h2>
+  <div class="comments-section">
+    <div id="comments-list" class="comments-list"></div>
+  </div>
+  <form id="comment-form">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" required>
     </div>
-    </section>
+    <div class="form-group">
+      <label for="comment">Comment:</label>
+      <textarea class="form-control" id="comment" rows="5" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Comment</button>
+  </form>
+</section>
+
+
+
+
+
 
     <!-- Modal -->
     <div class="modal fade" id="project1Modal" tabindex="-1" aria-labelledby="project1ModalLabel" aria-hidden="true">
@@ -334,10 +310,10 @@
         </div>
       </div>
     </div>
-
-    <div class="contact-circle">
+    <div class="contact-circle" id="contact-circle">
       <i class="fas fa-envelope"></i>
     </div>
+    
   </div>
 
   <!-- Contact -->
@@ -362,35 +338,60 @@
       </form>
     </div>
   </div>
-
+  <!-- login -->
+  <div class="login-container">
+    <button type="button" class="close">&times;</button>
+    <form id="loginForm" class="signup-form" action="/login" method="POST">
+      <h2>Login</h2>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  </div>
   <div class="contact-form-overlay" id="contact-form-overlay" style="display: none;"></div>
+<!-- signup -->
+  <div class="signup-container">
+    <button type="button" class="close">&times;</button>
+
+    <form id="signupForm" class="signup-form" action="/signup" method="POST">
+      <h2>Sign Up</h2>
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+  <!-- Add smooth scrolling behavior to anchor links -->
+<!-- Add smooth scrolling behavior to anchor links -->
+
+
+  
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
   <script src="js/dropdown.js"></script>
   <script src="js/comment.js"></script>
   <script src="js/projects.js"></script>
   <script src="js/contact.js"></script>
   <script src="js/signup.js"></script>
   <script src="js/login.js"></script>
-  <script>
-    // Function to open the sign-up pop-up
-    function openSignupPopup() {
-      window.open('signup.html', '_blank', 'width=500,height=400');
-    }
-
-    // Function to open the login pop-up
-    function openLoginPopup() {
-      window.open('login.html', '_blank', 'width=500,height=400');
-    }
-
-  
-
-    // Example event listeners for buttons
-    document.getElementById('signupButton').addEventListener('click', openSignupPopup);
-    document.getElementById('loginButton').addEventListener('click', openLoginPopup);
-    document.querySelector('.contact-circle').addEventListener('click', openContactForm);
-  </script>
+  <script src="js/notification.js"></script>
 </body>
 
 </html>
