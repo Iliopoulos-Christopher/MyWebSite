@@ -1,12 +1,10 @@
 const { exec } = require('child_process');
-
 const { spawn } = require('child_process');
 const express = require('express');
 const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
 const app = express();
 const port = 3000;
-
-
 
 // Middleware
 app.use(bodyParser.json());
@@ -33,13 +31,22 @@ db.connect((err) => {
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
   // Verify user credentials here
-  let query = 'SELECT * FROM users WHERE email = ? AND password = ?';
-  db.query(query, [email, password], (error, results) => {
+  let query = 'SELECT * FROM users WHERE email = ?';
+  db.query(query, [email], (error, results) => {
     if (error) {
       res.status(500).json({ error: 'Failed to process the login request.' });
     } else {
       if (results.length > 0) {
-        res.status(200).send('Logged in successfully!');
+        const user = results[0];
+        bcrypt.compare(password, user.password, (err, result) => {
+          if (err) {
+            res.status(500).json({ error: 'Failed to process the login request.' });
+          } else if (result) {
+            res.status(200).send('Logged in successfully!');
+          } else {
+            res.status(401).send('Incorrect email or password.');
+          }
+        });
       } else {
         res.status(401).send('Incorrect email or password.');
       }
@@ -61,14 +68,21 @@ app.post('/signup', (req, res) => {
         const errorMessage = 'Email already in use!';
         res.status(400).json({ error: errorMessage });
       } else {
-        // Create new user
-        query = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
-        db.query(query, [username, email, password], (error, results) => {
-          if (error) {
+        // Hash the password
+        bcrypt.hash(password, 10, (err, hashedPassword) => {
+          if (err) {
             res.status(500).json({ error: 'Failed to create a new user.' });
           } else {
-            // Send the redirect URL in the response
-            res.status(201).json({ message: 'User created successfully!', redirect: '/login' });
+            // Create new user
+            query = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
+            db.query(query, [username, email, hashedPassword], (error, results) => {
+              if (error) {
+                res.status(500).json({ error: 'Failed to create a new user.' });
+              } else {
+                // Send the redirect URL in the response
+                res.status(201).json({ message: 'User created successfully!', redirect: '/login' });
+              }
+            });
           }
         });
       }
@@ -76,9 +90,12 @@ app.post('/signup', (req, res) => {
   });
 });
 
+// ... rest of your code ...
+
+
 app.route('/comments')
   .get((req, res) => {
-    const query = 'SELECT * FROM comments ORDER BY created_at DESC';
+    const query = 'SELECT * FROM comments ORDER BY created_at ASC';
     db.query(query, (error, results) => {
       if (error) {
         res.status(500).json({ error: 'Failed to fetch comments.' });
@@ -135,20 +152,33 @@ app.delete('/comments/:id', (req, res) => {
   });
 });
 
+
+// ...
+
 app.post('/send-email', (req, res) => {
-  const { emailBody } = req.body;
+  const { name, email, message } = req.body;
 
-  const pythonScript = exec(`python3 C:\\Users\\Cilio\\OneDrive\\Desktop\\MyWebSight\\email_sender.py ${emailBody}`, (error, stdout, stderr) => {
-    if (error) {
-      console.error(`Error executing Python script: ${error}`);
-      res.status(500).send('Failed to send email');
-      return;
+  // Execute the Python script with form information as command-line arguments
+  const pythonScript = exec(
+    `python3 C:\\Users\\Cilio\\OneDrive\\Desktop\\MyWebSight\\email_sender.py "${name}" "${email}" "${message}"`,
+    (error, stdout, stderr) => {
+      if (error) {
+        console.error(`Error executing Python script: ${error}`);
+        res.status(500).send('Failed to send email');
+        return;
+      }
+
+      console.log(stdout);
+      res.status(200).send('Email sent successfully');
     }
-
-    console.log(stdout);
-    res.status(200).send('Email sent successfully');
-  });
+  );
 });
+
+
+
+
+
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

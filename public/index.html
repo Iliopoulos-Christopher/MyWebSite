@@ -16,13 +16,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<!-- Add this HTML element for the notification -->
-<div id="success-notification" style="background-color: chartreuse; text-align: center; z-index: 9999 !important; position: fixed; width: 100%;"></div>
-<div id="error-notification"  style="background-color: red; text-align: center; z-index: 9999 !important;  position: fixed; width: 100%;"></div>
-
-
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div id="success-notification" style="background-color: green; text-align: center; z-index: 9999; position: fixed; width: 100%; padding: 10px; font-family: Arial, sans-serif; font-size: 16px; color: rgb(255, 255, 255); font-weight: bold; display: none;"></div>
+  <div id="error-notification" style="background-color: red; text-align: center; z-index: 9999; position: fixed; width: 100%; padding: 10px; font-family: Arial, sans-serif; font-size: 16px; color: white; font-weight: bold; display: none;"></div>  
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
     <a class="navbar-brand" href="#home">Christopher Iliopoulos</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -71,7 +67,6 @@
     </div>
   </div>
 </nav>
-
   <div class="container mt-5">
     <div class="row">
       <div class="col-md-6">
@@ -117,18 +112,17 @@
           </div>
         </section>
       </div>
-
       <div class="col-md-6">
         <div class="row">
           <div class="col-md-12">
             <!-- Headshot -->
             <div class="headshot">
-              <img src="img/images.jpg" alt="Your Headshot" class="rounded-circle img-fluid">
+              <img src="img/pfp.png" alt="Your Headshot" class="rounded-circle img-fluid">
             </div>
           </div>
           <div class="col-md-12">
             <!-- About Section -->
-            <div id="aboutlinks"></div>
+            <div id="aboutlink"></div>
             <section id="about" class="section my-5">
               <div class="about-container">
                 <h2 class="display-4 text-primary mb-4 text-center">About</h2>
@@ -156,45 +150,114 @@
         </div>
       </div>
     </div>
-
     <!-- Projects Section -->
     <div id="projectslink"></div>
-    <section class="section" id="projects">
-      <div class="row justify-content-center">
-        <div class="col-md-8 text-center">
-          <h2 class="display-4 text-primary">Projects</h2>
-          <h3 class="project-title">Coming Soon. </h3>
-          <p>Most of my work has been for my copamny, but I have many small projects that are all slowly but surly coming to life and will be posted here when finished along with a link to the git dipository.</p>
+<section class="section" id="projects">
+  <div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+      <h2 class="display-4 text-primary">Projects</h2>
+      <p >Most of my work has been for my company, but I have many small projects that are all slowly but surely coming to life and will be posted here when "finished" along with a link to the git repository.</p>
+    </div>
+  </div>
+  <div class="project-carousel owl-carousel">
+    <!-- Project 1 -->
+    <div class="project-card">
+      <div class="project-card-inner">
+        <h3 class="project-title">Personal Website</h3>
+        <div class="skills">
+          <div class="skill">
+            <img src="./img/html-icon.png" alt="HTML" class="skill-icon">
+          </div>
+          <div class="skill">
+            <img src="./img/css-icon.jpg" alt="CSS" class="skill-icon">
+          </div>
+          <div class="skill">
+            <img src="./img/js-icon.png" alt="JavaScript" class="skill-icon">
+          </div>
+          <div class="skill">
+            <img src="./img/python-icon.png" alt="python" class="skill-icon">
+          </div>
+          <div class="skill">
+            <img src="./img/node-icon.png" alt="node" class="skill-icon">
+          </div>
+          <div class="skill">
+            <img src="./img/express-icon.png" alt="express" class="skill-icon express-icon">
+          </div>
+          <div class="skill">
+            <img src="./img/nginx-icon.png" alt="nginx" class="skill-icon">
+          </div>
+          <div class="skill">
+            <img src="./img/aws-icon.png" alt="aws" class="skill-icon aws-icon">
+          </div>
+          <div class="skill">
+            <img src="./img/mysql-icon.png" alt="mysql" class="skill-icon">
+          </div>
+          <div class="skill">
+            <img src="./img/git-icon.png" alt="git" class="skill-icon">
+          </div>
+        </div>
+          <p class="project-description">The Personal Website project serves as a portfolio and online presence to showcase my skills in various technologies. Built using HTML, CSS, JavaScript, Python, Node.js, Express.js, Nginx, AWS, MySQL, and Git. This project highlights my understanding of web development and technology as I continue to grow and expand my knowledge in the field.<strong>Please note further devlopment is still being done.</strong></p>
+          <a href="https://github.com/Iliopoulos-Christopher/MyWebSight" class="project-link" target="_blank">GitHub repository</a>
+        </div>
       </div>
-
-      <div class="project-carousel owl-carousel">
-        <div class="project-card">
-          <div class="project-card-inner">
-            <h3 class="project-title">Project 1</h3>
-            <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vestibulum ligula ut arcu efficitur, eget finibus ipsum rutrum.</p>
-            <a href="#" class="project-link">Read More</a>
+    <!-- Project 2: HIOI -->
+    <div class="project-card">
+      <div class="project-card-inner">
+        <h3 class="project-title">HIOI</h3>
+        <div class="skills">
+          <div class="skill">
+            <img src="./img/python-icon.png" alt="python" class="skill-icon">
+          </div>
+          <div class="skill">
+            <img src="./img/flask-icon.png" alt="flask" class="skill-icon">
+          </div>
+          <div class="skill">
+            <img src="./img/mysql-icon.png" alt="mysql" class="skill-icon">
+          </div>
+          <div class="skill">
+            <img src="./img/git-icon.png" alt="git" class="skill-icon">
+          </div>
+          <div class="skill">
+            <img src="./img/zillow-icon.png" alt="zillow" class="skill-icon">
+          </div>
+          <div class="skill">
+            <img src="./img/analytics-icon.png" alt="analytics" class="skill-icon">
+          </div>
+          <div class="skill">
+            <img src="./img/ellipsis-icon.png" alt="ellipsies" class="skill-icon" style="padding-top: 5px;">
           </div>
         </div>
-        <div class="project-card">
-          <div class="project-card-inner">
-            <h3 class="project-title">Project 2</h3>
-            <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vestibulum ligula ut arcu efficitur, eget finibus ipsum rutrum.</p>
-            <a href="#" class="project-link">Read More</a>
+        <p class="project-description">The HIOI (Home Investment Opportunity Identifier) project is an application that leverages the Zillow API to retrieve a list of houses based on the user's specified parameters. The application then utilizes Python to analyze the data and identify potential investment opportunities in the real estate market. By combining the power of web APIs and data analysis, HIOI aims to assist users [me] in making informed decisions when it comes to identifying investment opportunities in the housing market. <strong>Please note that this project is currently in development and more details will be available soon.</strong></p>
+        <a class="project-link" style="background-color: gray;">Coming Soon</a>
+      </div>
+    </div>
+    <!-- Project 3: Cloud Chat -->
+    <div class="project-card">
+      <div class="project-card-inner">
+        <h3 class="project-title">Cloud Chat</h3>
+        <div class="skills">
+          <div class="skill">
+            <img src="./img/chrome-icon.png" alt="chrome" class="skill-icon">
+          </div>
+          <div class="skill">
+            <img src="./img/socketio-icon.png" alt="socketio" class="skill-icon">
+          </div>
+          <div class="skill">
+            <img src="./img/ellipsis-icon.png" alt="ellipsies" class="skill-icon" style="padding-top: 13px;">
           </div>
         </div>
-        <div class="project-card">
-          <div class="project-card-inner">
-            <h3 class="project-title">Project 3</h3>
-            <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vestibulum ligula ut arcu efficitur, eget finibus ipsum rutrum.</p>
-            <a href="#" class="project-link">Read More</a>
-          </div>
         </div>
-    </section>
-
+        <p class="project-description">The Cloud Chat project is an innovative web application that utilizes Chrome extensions and websockets to connect users into a single chat environment. With Cloud Chat, users can communicate in real-time, exchanging messages and engaging in group conversations. Cloud Chat will provides a seamless and secure platform for connecting individuals across the web.<strong>Please note that this project is currently in development and more details will be available soon.</strong></p>
+        <a class="project-link" style="background-color: gray;">Coming Soon</a>
+      </div>
+    </div>
+  </div>
+</section>
     <!-- Resume Section -->
     <div id="resumelink"></div>
     <section class="section text-center my-5" id="resume">
       <h2 class="mb-4">Resume</h2>
+      <p style="margin-bottom: 70px;">___________________________________________________________________</p>
       <div style="text-align: left;">
         <h3 >CHRISTOPHER ILIOPOULOS</h3>
         <p ><a href="mailto:iliopoulos.christopher@gmail.com">iliopoulos.christopher@gmail.com</a></p>
@@ -264,33 +327,25 @@
         </ul>
       </div>
     </div>
-
-    <!-- Comments Section -->
+    </section>
 <!-- Comments Section -->
-<!-- Comments Section -->
-<section class="section" id="comments">
-  <h2>Comments</h2>
-  <div class="comments-section">
-    <div id="comments-list" class="comments-list"></div>
-  </div>
-  <form id="comment-form">
-    <div class="form-group">
-      <label for="name">Name:</label>
-      <input type="text" class="form-control" id="name" required>
+  <section class="section" id="comments">
+    <h2>Comments</h2>
+    <div class="comments-section">
+      <div id="comments-list" class="comments-list"></div>
     </div>
-    <div class="form-group">
-      <label for="comment">Comment:</label>
-      <textarea class="form-control" id="comment" rows="5" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit Comment</button>
-  </form>
-</section>
-
-
-
-
-
-
+    <form id="comment-form">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="comment">Comment:</label>
+        <textarea class="form-control" id="comment" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit Comment</button>
+    </form>
+  </section>
     <!-- Modal -->
     <div class="modal fade" id="project1Modal" tabindex="-1" aria-labelledby="project1ModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -313,26 +368,25 @@
     <div class="contact-circle" id="contact-circle">
       <i class="fas fa-envelope"></i>
     </div>
-    
   </div>
-
   <!-- Contact -->
   <div id="contact-form-container" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
     <div id="contact-form">
       <button type="button" class="close" onclick="closeContactForm()">&times;</button>
       <h2>Contact Me</h2>
+      <p>This form utilizes Python's smtplib module to connect to a specific Gmail account. It composes an email with the information provided in the form and sends it to me. </p>
       <form id="contactForm">
         <div class="form-group">
           <label for="name">Name:</label>
-          <input type="text" class="form-control" id="name" required>
+          <input type="text" class="form-control" id="cname" required>
         </div>
         <div class="form-group">
           <label for="email">Email:</label>
-          <input type="email" class="form-control" id="email" required>
+          <input type="email" class="form-control" id="cemail" required>
         </div>
         <div class="form-group">
           <label for="message">Message:</label>
-          <textarea class="form-control" id="message" rows="5" required></textarea>
+          <textarea class="form-control" id="cmessage" rows="5" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Send Message</button>
       </form>
@@ -376,21 +430,15 @@
       <button type="submit">Sign Up</button>
     </form>
   </div>
-  <!-- Add smooth scrolling behavior to anchor links -->
-<!-- Add smooth scrolling behavior to anchor links -->
 
-
-  
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <script src="https://smtpjs.com/v3/smtp.js"></script>
-  <script src="js/dropdown.js"></script>
+  <script src="js/scripts.js"></script>
   <script src="js/comment.js"></script>
   <script src="js/projects.js"></script>
   <script src="js/contact.js"></script>
-  <script src="js/signup.js"></script>
-  <script src="js/login.js"></script>
   <script src="js/notification.js"></script>
 </body>
 

@@ -1,77 +1,69 @@
-// Get the comment form element
+
 const commentForm = document.getElementById('comment-form');
-
-// Get the container for comments
 const commentsContainer = document.getElementById('comments-list');
-
-// Store the edited comment ID for reference
 let editedCommentId = null;
 
 // Function to handle form submission
 const handleFormSubmit = async (event) => {
   event.preventDefault();
-
-  // Check if the user is logged in
   const isLoggedIn = localStorage.getItem('isLoggedIn');
   const username = localStorage.getItem('username');
-
   if (!isLoggedIn) {
-    // Display an error message if the user is not logged in
     const errorNotification = document.getElementById('error-notification');
     errorNotification.textContent = 'Please log in to make a comment.';
     errorNotification.style.display = 'block';
+    setTimeout(() => {
+      errorNotification.style.display = 'none';
+    }, 5000);
     return;
   }
 
-  // Get the input values
   const name = username;
-  const comment = document.getElementById('comment').value;
-
+  const commentInput = document.getElementById('comment');
+  const comment = commentInput.value;
   if (!editedCommentId && (name.trim() === '' || comment.trim() === '')) {
-    // Validate the inputs for new comments only
+    // Validate the inputs for new comments
     const errorMessage = document.getElementById('error-notification');
     errorMessage.textContent = 'Please fill in all fields.';
     errorMessage.style.display = 'block';
     return;
   }
-
   if (editedCommentId) {
-    // Editing an existing comment
     const commentElement = document.getElementById(`comment-${editedCommentId}`);
     const commentTextElement = commentElement.querySelector('.comment-text');
     commentTextElement.textContent = comment;
-    commentForm.reset();
     editedCommentId = null;
     showSuccessNotification('Comment updated successfully!');
   } else {
-    // Creating a new comment
     const newComment = createCommentElement(name, comment);
     commentsContainer.prepend(newComment);
-    commentForm.reset();
-    showSuccessNotification('Comment submitted successfully!');
-  }
+    try {
+      const method = editedCommentId ? 'PUT' : 'POST';
+      const url = editedCommentId ? `/comments/${editedCommentId}` : '/comments';
+      const response = await fetch(url, {
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, comment }),
+      });
+      if (!response.ok) {
+        throw new Error('Failed to submit comment');
+      }
+      await fetchComments();
 
-  // Send the comment to the server
-  try {
-    const method = editedCommentId ? 'PUT' : 'POST';
-    const url = editedCommentId ? `/comments/${editedCommentId}` : '/comments';
-    const response = await fetch(url, {
-      method,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ name, comment }),
-    });
-    if (!response.ok) {
-      throw new Error('Failed to submit comment');
+      showSuccessNotification('Comment submitted successfully!');
+      commentInput.value = '';
+    } catch (error) {
+      console.error('Failed to submit comment:', error);
     }
-  } catch (error) {
-    console.error('Failed to submit comment:', error);
   }
 };
 
+
 // Function to create a comment element
-const createCommentElement = (name, comment, commentId) => {
+const createCommentElement = (name, comment, commentId, createdAt) => {
+  const formattedDate = new Date(createdAt).toLocaleString();
   const commentElement = document.createElement('div');
   commentElement.id = `comment-${commentId}`;
   commentElement.classList.add('comment');
@@ -79,10 +71,16 @@ const createCommentElement = (name, comment, commentId) => {
     <div class="comment-content">
       <h4 class="comment-author">${name}</h4>
       <p class="comment-text">${comment}</p>
+      <p class="comment-time">${formattedDate}</p> <!-- Display the formatted date -->
     </div>
     <div class="comment-actions">
-      <button class="comment-edit" onclick="editComment(${commentId})">Edit</button>
-      <button class="comment-delete" onclick="deleteComment(${commentId})">Delete</button>
+      ${editedCommentId === commentId ? `
+        <button class="comment-save" onclick="saveComment(${commentId})">Save</button>
+        <button class="comment-cancel" onclick="cancelEdit(${commentId})">Cancel</button>
+      ` : `
+        <button class="comment-edit" onclick="editComment(${commentId})">Edit</button>
+        <button class="comment-delete" onclick="deleteComment(${commentId})">Delete</button>
+      `}
     </div>
     <hr>
   `;
@@ -108,22 +106,21 @@ const fetchComments = async () => {
 
 // Function to display comments
 const displayComments = (comments, isLoggedIn, username) => {
-  commentsContainer.innerHTML = ''; // Clear previous comments
+  commentsContainer.innerHTML = '';
 
   comments.forEach((comment) => {
-    const { id, name, comment: text } = comment;
+    const { id, name, comment: text, created_at: createdAt } = comment;
 
-    const commentElement = createCommentElement(name, text, id);
-
-    // Show edit and delete buttons only for the user's own comments
+    const commentElement = createCommentElement(name, text, id, createdAt);
     const commentActions = commentElement.querySelector('.comment-actions');
-    if (isLoggedIn && username === name) {
+
+    if (isLoggedIn && name === username) {
       commentActions.innerHTML = `
         <button class="comment-edit" onclick="editComment(${id})">Edit</button>
         <button class="comment-delete" onclick="deleteComment(${id})">Delete</button>
       `;
     } else {
-      commentActions.innerHTML = ''; // Hide the edit and delete buttons
+      commentActions.style.display = 'none';
     }
 
     commentsContainer.appendChild(commentElement);
@@ -133,29 +130,80 @@ const displayComments = (comments, isLoggedIn, username) => {
   const nameField = document.getElementById('name');
   if (isLoggedIn) {
     nameField.value = username;
-    nameField.setAttribute('readonly', true); // Make the name field read-only
+    nameField.setAttribute('readonly', true); 
   } else {
     nameField.value = '';
-    nameField.removeAttribute('readonly'); // Remove the read-only attribute
+    nameField.removeAttribute('readonly'); 
   }
 };
+
+
 
 // Function to edit a comment
 const editComment = (commentId) => {
   const commentElement = document.getElementById(`comment-${commentId}`);
   const commentTextElement = commentElement.querySelector('.comment-text');
-
-  // Enable editing mode
   commentTextElement.contentEditable = true;
   commentTextElement.focus();
-
-  // Store the comment ID being edited
   editedCommentId = commentId;
+  const commentActions = commentElement.querySelector('.comment-actions');
+  commentActions.innerHTML = `
+    <button class="comment-save" onclick="saveComment(${commentId})">Save</button>
+    <button class="comment-cancel" onclick="cancelEdit(${commentId})">Cancel</button>
+  `;
+};
+
+// Function to save a comment after editing
+const saveComment = async (commentId) => {
+  const commentElement = document.getElementById(`comment-${commentId}`);
+  const commentTextElement = commentElement.querySelector('.comment-text');
+  const commentText = commentTextElement.textContent;
+  commentTextElement.contentEditable = false;
+
+  // Send the updated comment to the server
+  try {
+    const response = await fetch(`/comments/${commentId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ comment: commentText }),
+    });
+
+    if (response.ok) {
+      showSuccessNotification('Comment updated successfully!');
+    } else {
+      throw new Error('Failed to update comment');
+    }
+  } catch (error) {
+    console.error('Failed to update comment:', error);
+    showErrorNotification('Failed to update comment. Please try again.');
+  }
+
+  editedCommentId = null;
+  const commentActions = commentElement.querySelector('.comment-actions');
+  commentActions.innerHTML = `
+    <button class="comment-edit" onclick="editComment(${commentId})">Edit</button>
+    <button class="comment-delete" onclick="deleteComment(${commentId})">Delete</button>
+  `;
+};
+
+// Function to cancel editing a comment
+const cancelEdit = (commentId) => {
+  const commentElement = document.getElementById(`comment-${commentId}`);
+  const commentTextElement = commentElement.querySelector('.comment-text');
+  commentTextElement.contentEditable = false;
+  commentTextElement.textContent = commentTextElement.dataset.originalText;
+  editedCommentId = null;
+  const commentActions = commentElement.querySelector('.comment-actions');
+  commentActions.innerHTML = `
+    <button class="comment-edit" onclick="editComment(${commentId})">Edit</button>
+    <button class="comment-delete" onclick="deleteComment(${commentId})">Delete</button>
+  `;
 };
 
 // Function to delete a comment
 const deleteComment = async (commentId) => {
-  // Display a confirmation popup
   if (confirm('Are you sure you want to delete this comment?')) {
     try {
       const response = await fetch(`/comments/${commentId}`, {
@@ -163,7 +211,6 @@ const deleteComment = async (commentId) => {
       });
 
       if (response.ok) {
-        // Remove the comment element from the DOM
         const commentElement = document.getElementById(`comment-${commentId}`);
         commentElement.remove();
         showSuccessNotification('Comment deleted successfully!');
@@ -177,8 +224,5 @@ const deleteComment = async (commentId) => {
   }
 };
 
-// Add event listener to the form submit event
 commentForm.addEventListener('submit', handleFormSubmit);
-
-// Fetch and display existing comments
 fetchComments();

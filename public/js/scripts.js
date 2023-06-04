@@ -1,15 +1,23 @@
+// Open login form
+document.getElementById('loginButton').addEventListener('click', function() {
+  document.querySelector('.login-container').style.display = 'block';
+  document.querySelector('.contact-form-overlay').style.display = 'block';
+});
 
-  // Function to open the sign-up pop-up
-  function openSignupPopup() {
-    window.open('signup.html', '_blank', 'width=500,height=400');
-  }
+// Close login form
+document.querySelector('.login-container .close').addEventListener('click', function() {
+  document.querySelector('.login-container').style.display = 'none';
+  document.querySelector('.contact-form-overlay').style.display = 'none';
+});
 
-  // Function to open the login pop-up
-  function openLoginPopup() {
-    window.open('login.html', '_blank', 'width=500,height=400');
-  }
+// Open signup form
+document.getElementById('signupButton').addEventListener('click', function() {
+  document.querySelector('.signup-container').style.display = 'block';
+  document.querySelector('.contact-form-overlay').style.display = 'block';
+});
 
-  // Add event listeners to the buttons
-  document.getElementById('signupButton').addEventListener('click', openSignupPopup);
-  document.getElementById('loginButton').addEventListener('click', openLoginPopup);
-
+// Close signup form
+document.querySelector('.signup-container .close').addEventListener('click', function() {
+  document.querySelector('.signup-container').style.display = 'none';
+  document.querySelector('.contact-form-overlay').style.display = 'none';
+});
