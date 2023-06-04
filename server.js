@@ -2,6 +2,8 @@ const { exec } = require('child_process');
 const { spawn } = require('child_process');
 const express = require('express');
 const bodyParser = require('body-parser');
+const config = require('./config.js');
+const mysql = require('mysql');
 const bcrypt = require('bcrypt');
 const app = express();
 const port = 3000;
@@ -13,12 +15,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Serve static files from the 'public' directory
 app.use(express.static('public'));
 
-const mysql = require('mysql');
+
 const db = mysql.createConnection({
-  host: '127.0.0.1',
-  user: 'root',
-  password: 'Root',
-  database: 'website_db'
+  host: config.host,
+  user: config.user,
+  password: config.password,
+  database: config.database,
 });
 
 db.connect((err) => {
