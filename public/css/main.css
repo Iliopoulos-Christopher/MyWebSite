@@ -38,6 +38,7 @@
 
 
 #resume {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,6 +51,19 @@
   border-radius: 5px;
   text-align: center;
 }
+#resume::after {
+  content: "";
+  position: absolute;
+  bottom: calc(100% - 95px); /* Adjust the value as needed */
+  left: 0;
+  right: 0;
+  width: 700px;
+  height: 1px;
+  margin: 0 auto;
+  background-color: #333;
+}
+
+
 
 
 #resume h2 {
@@ -497,10 +511,13 @@ body {
 .project-card {
   border: 2px solid #333;
   color: #333;
-  padding: 20px;
+  padding: 30px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
   margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
   flex: 1; 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
@@ -517,6 +534,7 @@ body {
 
 .project-description {
   margin-bottom: 10px;
+  padding-bottom: 100px;
 }
 
 .project-image {
@@ -558,3 +576,11 @@ body {
 .aws-icon {
   padding-top: 0.5em;
 }
+
+.nav-item img {
+  margin-top: 10px;
+  width: 20px; 
+  height: 20px; 
+}
+
+

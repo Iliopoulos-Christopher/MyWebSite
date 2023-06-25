@@ -1,7 +1,7 @@
 import sys
 import smtplib
 from email.message import EmailMessage
-from config import sender_email, sender_password, receiver_email
+from configpy import sender_email, sender_password, receiver_email
 
 # Retrieve command-line arguments
 name = sys.argv[1]
