@@ -6,7 +6,7 @@ const config = require('./config.js');
 const mysql = require('mysql');
 const bcrypt = require('bcrypt');
 const app = express();
-const port = 3000;
+const port = 80;
 
 // Middleware
 app.use(bodyParser.json());
@@ -162,7 +162,7 @@ app.post('/send-email', (req, res) => {
 
   // Execute the Python script with form information as command-line arguments
   const pythonScript = exec(
-    `python3 C:\\Users\\Cilio\\OneDrive\\Desktop\\MyWebSight\\email_sender.py "${name}" "${email}" "${message}"`,
+    `python3 /home/PersonalWebsight/email_sender.py "${name}" "${email}" "${message}"`,
     (error, stdout, stderr) => {
       if (error) {
         console.error(`Error executing Python script: ${error}`);
